@@ -13,7 +13,7 @@
     </div>
   </div>
 </template>
-<script type="text/ecmascript-6">
+<script>
 import {Visualization} from "components/D3Visualization";
 import {setting} from "config/index";
 
@@ -45,7 +45,7 @@ export default {
       let me = this;
       me.records = [];
       this.clearAll = true;
-      var session = this.driver.session();
+      var session = this.driver.session({database: 'ckh'});
       let query = this.query;
       if (query == "") return;
       session

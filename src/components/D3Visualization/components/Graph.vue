@@ -3,16 +3,16 @@
     <svg class='neod3viz' ref="graphInit"/>
     <div v-if="true" style="position: absolute; right: 0px; bottom: 12px;">
       <div
-        style="float:right;margin-right:5px;font-size:50px;cursor:pointer;margin-bottom: 50px"
+        style="float:right;margin-right:50px;font-size:20px;cursor:pointer;margin-bottom: 50px"
         :class="[state.zoomInLimitReached ? 'faded zoom-in' : 'zoom-in']"
         @click="zoomInClicked">
-        +
+        放大
       </div>
       <div
-        style="float:left;margin-right:10px;font-size:50px;cursor:pointer;margin-bottom: 50px"
+        style="float:left;margin-right:10px;font-size:20px;cursor:pointer;margin-bottom: 50px"
         :class="[state.zoomOutLimitReached ? 'faded zoom-out' : 'zoom-out']"
         @click="zoomOutlicked">
-        —
+        缩小
       </div>
     </div>
   </StyledSvgWrapper>

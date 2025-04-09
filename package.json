@@ -23,11 +23,13 @@
     "dev": "cross-env NODE_ENV=development node build/dev-server.js"
   },
   "dependencies": {
+    "axios": "^1.8.4",
     "element-ui": "^2.15.1",
     "jquery": "^3.2.1",
     "jschardet": "^3.0.0",
     "neo4j-driver": "^4.2.2",
     "papaparse": "^5.3.0",
+    "spark-md5": "^3.0.2",
     "uuid": "^8.3.2",
     "vue": "^2.6.12",
     "vue-cookies": "^1.7.4",
