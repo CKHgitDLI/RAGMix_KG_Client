@@ -2,8 +2,11 @@
   <div class="kgWidget">
     <div class="kgHead">
       <div style="margin-left:30px;">
-        <span>输入查询语句进行查询:</span>
-        <input type="text" style="width:700px;" v-model="query" @keyup.enter="executeQuery"/>
+        <span>CQI</span>
+        <input type="text" style="width:700px;" v-model="query" @keyup.enter="executeQuery" id="cqi"/>
+        <span>数据库</span>
+        <input type="text" style="width:700px;" v-model="database" @keyup.enter="executeQuery" id="database"/>
+        <button @click="executeQuery">查询</button>
       </div>
     </div>
     <div class="flexRow kgWidgetContainer">
@@ -28,7 +31,8 @@ export default {
           "MATCH (n)-[r]->(m)\n" +
           "RETURN n, r, m",
       records: [],
-      clearAll: false
+      clearAll: false,
+      database: "ckh"
     };
   },
   mounted() {
@@ -45,7 +49,7 @@ export default {
       let me = this;
       me.records = [];
       this.clearAll = true;
-      var session = this.driver.session({database: 'ckh'});
+      var session = this.driver.session({database: this.database});
       let query = this.query;
       if (query == "") return;
       session
