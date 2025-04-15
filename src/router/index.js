@@ -15,15 +15,5 @@ export default new VueRouter({
 		path: '/',
 		component: require('../views/Main')
 	}
-	, {
-		name: 'test',
-		path: '/test',
-		component: require('../views/Test')
-	},
-	// {
-	// 	name: 'neo4j',
-	// 	path: '/neo4j',
-	// 	component: require('../views/neo4j')
-	// }
 ]
 })
