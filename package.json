@@ -20,14 +20,17 @@
     "update": "npm update --legacy-peer-deps",
     "build": "cross-env NODE_ENV=production node build/build.js",
     "clean": "rm -rf dist",
-    "dev": "cross-env NODE_ENV=development node build/dev-server.js"
+    "dev": "cross-env NODE_ENV=development node build/dev-server.js",
+    "serve": "vue-cli-service serve"
   },
   "dependencies": {
+    "@vitejs/plugin-vue-jsx": "^4.1.2",
     "axios": "^1.8.4",
     "element-ui": "^2.15.1",
     "jquery": "^3.2.1",
     "jschardet": "^3.0.0",
     "neo4j-driver": "^4.2.2",
+    "openai": "^4.94.0",
     "papaparse": "^5.3.0",
     "spark-md5": "^3.0.2",
     "uuid": "^8.3.2",
@@ -40,6 +43,8 @@
     "vuex-router-sync": "^4.2.0"
   },
   "devDependencies": {
+    "@vue/cli-plugin-babel": "^3.8.0",
+    "@vue/cli-service": "^3.8.0",
     "autoprefixer": "^7.1.1",
     "babel-core": "^6.25.0",
     "babel-eslint": "^7.2.3",
