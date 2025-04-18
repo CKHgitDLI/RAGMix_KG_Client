@@ -110,7 +110,7 @@
             </StyledInlineList>
         )
         } else if (type === 'canvas') {
-          const description = `Displaying ${item.nodeCount} nodes, ${item.relationshipCount} relationships.`
+          const description = `共有 ${item.nodeCount} 个节点, ${item.relationshipCount} 条关系.`
           inspectorContent = (
             <StyledInlineList class='list-inline'>
               <StyledInspectorFooterRowListPair class='pair' key='pair'>

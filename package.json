@@ -20,8 +20,7 @@
     "update": "npm update --legacy-peer-deps",
     "build": "cross-env NODE_ENV=production node build/build.js",
     "clean": "rm -rf dist",
-    "dev": "cross-env NODE_ENV=development node build/dev-server.js",
-    "serve": "vue-cli-service serve"
+    "dev": "cross-env NODE_ENV=development node build/dev-server.js"
   },
   "dependencies": {
     "@vitejs/plugin-vue-jsx": "^4.1.2",

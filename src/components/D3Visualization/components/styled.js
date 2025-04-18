@@ -21,12 +21,12 @@
 import styled from 'vue-styled-components'
 
 export const legendRowHeight = 32
-export const inspectorFooterContractedHeight = 22
+export const inspectorFooterContractedHeight = 180
 const pMarginTop = 6
 
 export const StyledSvgWrapper = styled.div`
   line-height: 0;
-  height: 100%;
+  height: 65vh;
   position: relative;
   > svg {
     height: 100%;
@@ -139,8 +139,9 @@ export const StyledInspectorFooter = styled.div`
   white-space: normal;
   overflow: scroll;
   &.contracted {
-    max-height: ${inspectorFooterContractedHeight}px;
-    overflow: hidden;
+    max-height: 15vh;
+    overflow-y:scroll;
+    overflow-x: hidden;
   }
 `
 
