@@ -83,10 +83,16 @@ export default {
       clearAll: false,
       database: "ckh",
       errorMessage: "",
-      isLoading:false,
+      isLoading: false,
     };
   },
   mounted() {
+    console.info(this.$route.query.param)
+    if (this.$route.query.param) {
+      let t = JSON.parse(this.$route.query.param)
+      this.query = t.query;
+      this.database = t.database;
+    }
     this.driver = neo4j.driver(
         setting.neo4jUrl,
         neo4j.auth.basic(setting.neo4jUserName, setting.neo4jPassword)
@@ -98,7 +104,7 @@ export default {
       console.info(item)
     },
     executeQuery() {
-      this.isLoading=true;
+      this.isLoading = true;
       let me = this;
       me.records = [];
       this.clearAll = true;
@@ -120,7 +126,7 @@ export default {
             // me.errorMessage="查询语句不合法"
             me.driver.close();
           });
-      this.isLoading=false;
+      this.isLoading = false;
     }
   },
   watch: {
