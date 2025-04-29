@@ -78,7 +78,8 @@ export default {
     return {
       query:
           "MATCH (n)-[r]->(m)\n" +
-          "RETURN n, r, m",
+          "RETURN n, r, m\n" +
+          "LIMIT 300",
       records: [],
       clearAll: false,
       database: "ckh",
