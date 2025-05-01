@@ -30,7 +30,7 @@ module.exports = {
     cssSourceMap: false
   },
   setting: {
-    neo4jUrl: 'neo4j://localhost',
+    neo4jUrl: 'neo4j://129.211.14.136',
     neo4jUserName: 'neo4j',
     neo4jPassword: '1609936983'
   }
