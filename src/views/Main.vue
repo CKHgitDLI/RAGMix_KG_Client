@@ -1,6 +1,6 @@
 <template>
   <div class="kgWidget">
-    <div class="flexRow container">
+    <div class="flexRow container" v-if="show_query">
       <!-- 左侧查询面板 -->
       <div class="queryPanel">
         <div class="inputGroup">
@@ -62,6 +62,8 @@
         ⚠️ {{ errorMessage }}
       </div>
     </transition>
+
+    <Visualization @clickNode="handleClickNode" :records="records" :clearAll="clearAll"></Visualization>
   </div>
 </template>
 
@@ -76,10 +78,11 @@ export default {
   },
   data() {
     return {
+      show_query: false,
       query:
           "MATCH (n)-[r]->(m)\n" +
           "RETURN n, r, m\n" +
-          "LIMIT 300",
+          "LIMIT 200",
       records: [],
       clearAll: false,
       database: "ckh",
@@ -88,6 +91,20 @@ export default {
     };
   },
   mounted() {
+    this.$alert('本系统用于演示增强KG构建方法的自建知识图谱结构与自建可视化能力。', '知识图谱驱动的大模型检索增强系统研究', {
+      confirmButtonText: '我知道了',
+    });
+    this.openFullscreen()
+    if (this.isMobileDevice()) {
+      this.show_query = false
+      this.renderResize()
+      this.query =
+          "MATCH (n)-[r]->(m)\n" +
+          "RETURN n, r, m\n" +
+          "LIMIT 100"
+    } else {
+      this.show_query = true
+    }
     console.info(this.$route.query.param)
     if (this.$route.query.param) {
       let t = JSON.parse(this.$route.query.param)
@@ -101,6 +118,38 @@ export default {
     this.executeQuery();
   },
   methods: {
+    openFullscreen() {
+      if (document.documentElement.requestFullscreen) {
+        document.documentElement.requestFullscreen();
+      } else if (document.documentElement.mozRequestFullScreen) { /* Firefox */
+        document.documentElement.mozRequestFullScreen();
+      } else if (document.documentElement.webkitRequestFullscreen) { /* Chrome, Safari & Opera */
+        document.documentElement.webkitRequestFullscreen();
+      } else if (document.documentElement.msRequestFullscreen) { /* IE/Edge */
+        document.documentElement.msRequestFullscreen();
+      }
+    },
+    renderResize() {
+      // 判断横竖屏
+      let width = document.documentElement.clientWidth
+      let height = document.documentElement.clientHeight
+      if (width < height) {
+        alert('检测到移动端浏览，请横屏浏览')
+      }
+    },
+    //判断当前设备是否为移动端
+    isMobileDevice() {
+      const ua = navigator.userAgent.toLowerCase();
+      const t1 =
+          /android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini|mac/i.test(
+              ua
+          );
+      const t2 =
+          ua.indexOf("windows") < 0 &&
+          ua.indexOf("iphone") < 0 &&
+          navigator.maxTouchPoints > 1;
+      return t1 || t2;
+    },
     handleClickNode(item) {
       console.info(item)
     },
