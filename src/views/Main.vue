@@ -2,7 +2,7 @@
   <div class="kgWidget">
     <div class="flexRow container">
       <!-- 左侧查询面板 -->
-      <div class="queryPanel">
+      <div class="queryPanel" v-if="show_query">
         <div class="inputGroup">
           <label for="cqi" class="inputLabel">
             <span class="labelIcon">📝</span>
@@ -76,6 +76,7 @@ export default {
   },
   data() {
     return {
+      show_query: false,
       query:
           "MATCH (n)-[r]->(m)\n" +
           "RETURN n, r, m\n" +
@@ -99,8 +100,38 @@ export default {
         neo4j.auth.basic(setting.neo4jUserName, setting.neo4jPassword)
     );
     this.executeQuery();
+    this.$alert('本系统用于演示增强KG构建方法的自建知识图谱结构与自建可视化能力。', '知识图谱驱动的大模型检索增强系统研究', {
+      confirmButtonText: '我知道了',
+    });
+    if (this.isMobileDevice()) {
+      this.show_query = false
+      this.renderResize()
+    } else {
+      this.show_query = true
+    }
   },
   methods: {
+    renderResize() {
+      // 判断横竖屏
+      let width = document.documentElement.clientWidth
+      let height = document.documentElement.clientHeight
+      if (width < height) {
+        alert('检测到移动端浏览，请横屏浏览')
+      }
+    },
+    //判断当前设备是否为移动端
+    isMobileDevice() {
+      const ua = navigator.userAgent.toLowerCase();
+      const t1 =
+          /android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini|mac/i.test(
+              ua
+          );
+      const t2 =
+          ua.indexOf("windows") < 0 &&
+          ua.indexOf("iphone") < 0 &&
+          navigator.maxTouchPoints > 1;
+      return t1 || t2;
+    },
     handleClickNode(item) {
       console.info(item)
     },
