@@ -17,19 +17,19 @@
               @keydown.ctrl.enter="executeQuery"
           ></textarea>
 
-          <label for="database" class="inputLabel">
-            <span class="labelIcon">🗃️</span>
-            目标数据库
-          </label>
+<!--          <label for="database" class="inputLabel">-->
+<!--            <span class="labelIcon">🗃️</span>-->
+<!--            目标数据库-->
+<!--          </label>-->
           <div class="inputWrapper">
-            <input
-                id="database"
-                v-model="database"
-                type="text"
-                class="styledInput"
-                placeholder="输入数据库名称"
-                @keyup.enter="executeQuery"
-            >
+<!--            <input-->
+<!--                id="database"-->
+<!--                v-model="database"-->
+<!--                type="text"-->
+<!--                class="styledInput"-->
+<!--                placeholder="输入数据库名称"-->
+<!--                @keyup.enter="executeQuery"-->
+<!--            >-->
             <button
                 class="executeBtn"
                 :class="{ loading: isLoading }"
@@ -85,7 +85,7 @@ export default {
           "LIMIT 200",
       records: [],
       clearAll: false,
-      database: "ckh",
+      database: "neo4j",
       errorMessage: "",
       isLoading: false,
     };
