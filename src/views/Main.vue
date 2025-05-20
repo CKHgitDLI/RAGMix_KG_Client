@@ -6,7 +6,7 @@
         <div class="inputGroup">
           <label for="cqi" class="inputLabel">
             <span class="labelIcon">📝</span>
-            CQL Query
+            Cypher Query
             <span class="hint">(支持多行输入)</span>
           </label>
           <textarea
